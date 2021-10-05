@@ -6,11 +6,11 @@ Development Environment Establishment
 
 Ubuntu
 
-[RaspberryPi 4B](./doc/raspberrypi4b.md)
+[RaspberryPi 4B](https://github.com/xuliangcs/env/tree/main/doc/raspberrypi4b.md)
 
 VS Code
 
-[Shell Commands](./doc/shell.md)
+[Shell Commands](https://github.com/xuliangcs/env/tree/main/doc/shell.md)
 
 
 
