@@ -16,9 +16,13 @@ $ lsb_release -a
 ```
 
 > No LSB modules are available.
+>
 > Distributor ID:	Raspbian
+>
 > Description:	Raspbian GNU/Linux 10 (buster)
+>
 > Release:	10
+>
 > Codename:	buster
 
 
@@ -49,8 +53,9 @@ pwd: raspberry
 ### Local ssh key generation
 
 ```shell
-ssh-keygen -t rsa -C "your_email"				add email address
-ssh-keygen -f xxx 								-f set the output file name
+ssh-keygen -t rsa -C "your_email"	add email address
+
+ssh-keygen -f xxx					-f set the output file name
 ```
 
 generated files：
@@ -60,7 +65,8 @@ generated files：
 - `id_rsa` local private key
 - `id_rsa.pub` local public key
 - `authorized_keys`: others public keys
-  ![](./res/keys.png)
+
+![](./res/keys.png)
 
 
 
@@ -100,13 +106,13 @@ Install and configure remote ssh in VSCode：
 
 - Install plug-in `Remote-SSH`
 
-- In `Remote Explore` click `+` to add new remote host
+- In `Remote Explore` click `+` to add a new remote host
 
-- Enter `ssh pi@xxx.xxx.xxx.xx`x, select the location of the target `config` file
+- Enter `ssh pi@xxx.xxx.xxx.xxx`, select the location of the target `config` file
 
 - Right click --> connect
 
-- Select the OS of the remote server:`linux`,`windows`,`macOS` etc.，then vscode will download  and configure the `VS Code Server` on the remote
+- Select the OS of the remote server:`linux`,`windows`,`macOS` etc.，then vscode will download  and configure the `VS Code Server` on the remote host
 
   <img src="./res/vscodesshserver.png" alt="image-20210922132858100" style="zoom: 80%;" />
 
@@ -289,19 +295,19 @@ unzip 3.4.0.zip
 
 
 
-#### Compile OpenCV
+#### Compile and Install OpenCV to /home/pi/local/opencv-3.4.0
 
 ```shell
-cd /home/pi/Downloads/opencv-3.4.0
+$ cd /home/pi/Downloads/opencv-3.4.0
 
-mkdir build
+$ mkdir build
 
-cd build
+$ cd build
 
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/pi/local/opencv-3.4.0 -D BUILD_opencv_python2=OFF -D BUILD_opencv_python3=OFF -D WITH_LIBV4L=ON -D OPENCV_GENERATE_PKGCONFIG=ON ..
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/pi/local/opencv-3.4.0 -D BUILD_opencv_python2=OFF -D BUILD_opencv_python3=OFF -D WITH_LIBV4L=ON -D OPENCV_GENERATE_PKGCONFIG=ON ..
 
-make -j4
-make install
+$ make -j4
+$ make install
 ```
 
 [:elephant: Click to see compile logs](./res/logs_rpi4_opencv.md)
@@ -321,14 +327,23 @@ opencv.pc
 > \#Package Information for pkg-config
 >
 > prefix=/home/pi/local/opencv-3.4.0/
+>
 > exec_prefix=${prefix}
+>
 > libdir=${exec_prefix}/lib
+>
 > includedir_old=${prefix}/include/opencv
+>
 > includedir_new=${prefix}/includeName: OpenCV
+>
 > Description: Open Source Computer Vision Library
+>
 > Version: 3.4.0
+>
 > Libs: -L${exec_prefix}/lib -lopencv_dnn -lopencv_ml -lopencv_objdetect -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_video -lopencv_photo -lopencv_imgproc -lopencv_flann -lopencv_core
+>
 > Libs.private: -ldl -lm -lpthread -lrt
+>
 > Cflags: -I${includedir_old} -I${includedir_new}
 
 
@@ -360,7 +375,7 @@ int main(){
 
 
 
-##### For the Compilers to Find the Header Files and Library Files
+##### For the compilers to find the header files and library files
 
 tips：
 
@@ -443,7 +458,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/pi/local/opencv-3.4.0/lib
 
 
 
-## Machine Learning Libraries（scipy,sklearn,pytorch,torchvision）
+## Machine Learning Libraries
 
 ### Install scipy
 
@@ -483,15 +498,15 @@ pip3 install -U scikit-learn
 
 
 
-**Load the GPU pretrained model to a CPU:**
+Tip: 
+
+Load the GPU pretrained model to a CPU:
 
 ```shell
 torch.load('xxx.pkl', map_location='cpu')
 ```
 
-Otherwise the following error occures:
 
-![img](./res/error_pytorch_cpu_model.png)
 
 
 
@@ -525,21 +540,37 @@ sudo apt-get install libusb-dev
 ```
 
 > pi@raspberrypi:/usr $ find -name "libusb*"
+>
 > ./lib/arm-linux-gnueabihf/libusbmuxd.so.4.1.0
+>
 > ./lib/arm-linux-gnueabihf/libusb.a
+>
 > ./lib/arm-linux-gnueabihf/libusb-0.1.so.4.4.4
+>
 > ./lib/arm-linux-gnueabihf/libusb-1.0.so.0
+>
 > ./lib/arm-linux-gnueabihf/libusb-0.1.so.4
+>
 > ./lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+>
 > ./lib/arm-linux-gnueabihf/libusb.so
+>
 > ./lib/arm-linux-gnueabihf/pkgconfig/libusb.pc
+>
 > ./lib/arm-linux-gnueabihf/libusbmuxd.so.4
+>
 > ./share/doc/libusb-1.0-0
+>
 > ./share/doc/libusbmuxd4
+>
 > ./share/doc/libusb-0.1-4
+>
 > ./share/doc/libusb-dev
+>
 > ./share/doc-base/libusb-dev
+>
 > ./share/man/man1/libusb-config.1.gz
+>
 > ./bin/libusb-config
 
 
