@@ -59,9 +59,10 @@ generated files：
 - `config`: short name, ip, port, username, ssh private key location, etc.
 - `id_rsa` local private key
 - `id_rsa.pub` local public key
-- `authorized_keys`: others public keys。
+- `authorized_keys`: others public keys
+  ![](./res/keys.png)
 
-<img src="./res/keys.png" alt="image-20210922133451019" style="zoom:80%;" align="left" />
+
 
 **config**
 
