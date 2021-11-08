@@ -31,3 +31,17 @@ $ sudo umount /media/pi/u
 
 
 
+## git
+
+```shell
+git config --global --list
+
+git config --local --list
+git config --system --list
+
+```
+
+
+
+
+
