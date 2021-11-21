@@ -172,7 +172,7 @@ Tips：
 
 #### 2.4.2 Compile the demo
 
-**C++ demo: **
+**C++ demo:**
 
 `main.cpp`
 
