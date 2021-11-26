@@ -166,9 +166,35 @@ Tips：
 
 
 
- 
+ #### 2.4.2 CMake Configuration
+
+CMakeList.txt
+
+The default OpenCV installation folder path will be used for `OpenCV_DIR`:
+
+```shell
+find_package( OpenCV REQUIRED )
+
+```
+
+Self-defined OpenCV installation folder path:
+
+e.g.
+
+```shell
+set(OpenCV_DIR /usr/local/opencv4/lib/cmake/opencv4)
+find_package( OpenCV 4 REQUIRED )    
+```
+
+e.g.
+```shell
+set(OpenCV_DIR /usr/share/OpenCV)
+find_package( OpenCV REQUIRED )
+```
 
 
+
+The folder which contains the `OpenCVConfig.cmake` file.
 
 #### 2.4.2 Compile the demo
 
