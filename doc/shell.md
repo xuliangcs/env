@@ -39,6 +39,9 @@ git config --global --list
 git config --local --list
 git config --system --list
 
+
+git config --global user.name "xxx"
+git config --global user.email "xxx@xxx.com"
 ```
 
 
