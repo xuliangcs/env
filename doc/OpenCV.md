@@ -1,54 +1,52 @@
 [TOC]
-# Install OpenCV
+# OpenCV Installation
 
-## 1. Python3 Version
-
+## 1. Python Version
+Check the python version:
 ```shell
-# check python version:
 which python
 ls /usr/bin/python*
 ls /usr/bin/python
-# 
-python3 xxx
+
+> python3.xx.xx
 ```
+> If there isn't any python has been installed, you can install it via anaconda or miniconda. ([see details]())
 
-
-
-### 1.1 Install 3rd-Party Libraries
-
-1. Install 3rd-party libraries for: compilation, image processing, video processing,  optimization, and computation:
-
-    ```bash
-    sudo apt-get install build-essential cmake git pkg-config libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libgtk2.0-dev libatlas-base-dev gfortran libopenblas-dev libatlas3-base -y
-    ```
-
-2. Then, install additional libraries depending on the error info.
-
-
-
-### 1.2 Install opencv-python
+Install:
 
 ```shell
+#for the default version
 pip3 install opencv-python
-
 pip3 list
+
+#for a special version
+pip install opencv-python==xx.xx.xx
+pip list
 ```
 
-versions:
-
-- python3.7, numpy1.16.2
-
-- opencv-python-4.5.3.56
+current versions: python3.7, numpy1.16.2, opencv-python-4.5.3.56
 
 
 
 
 
-## 2. C++ Version 
-
+## 2. C++ Version  
+![](https://img.shields.io/badge/ubuntu-tested-green)
 (install from source code)
 
-### 2.1 Downloads
+### 2.1 Install 3rd-Party Libraries
+
+Install 3rd-party libraries for: compilation, image processing, video processing,  optimization, and computation:
+
+```bash
+sudo apt-get install build-essential cmake git pkg-config libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libgtk2.0-dev libatlas-base-dev gfortran libopenblas-dev libatlas3-base -y
+```
+
+> Install additional libraries depending on the error info.
+
+
+
+### 2.2 Downloads
 
 ```shell
 cd ~/Downloads
@@ -60,13 +58,11 @@ cd ~/Downloads
 wget https://github.com/opencv/opencv/archive/3.4.0.zip
 ```
 
-or:
+or: Download from the browser at https://opencv.org/releases/ 
 
-https://opencv.org/releases/ 
+### 2.3 Unzip the package
 
-### 2.2 Unzip the package
-
-`3.4.0.zip` -> extract here -> `opencv-3.4.0`
+`3.4.0.zip` -> right click -> extract here -> `opencv-3.4.0`
 
 or:
 
@@ -77,7 +73,7 @@ unzip 3.4.0.zip
 
 
 
-### 2.3 Compile and Install OpenCV to /home/pi/local/opencv-3.4.0
+### 2.4 Compile and Install OpenCV to /home/pi/local/opencv-3.4.0
 
 ```shell
 $ cd /home/pi/Downloads/opencv-3.4.0
@@ -104,7 +100,7 @@ Tips:
 
 
 
-`opencv.pc`:
+File `opencv.pc`:
 
 > \#Package Information for pkg-config
 >
@@ -135,11 +131,11 @@ Tips:
 
 Tips：
 
-- Different compilers have their own protocols, e.g., g++, make, cmake, qmake, etc., but the principle is to configure the paths of `header` and `library` files.
+- Different compilers have their own protocols, e.g., g++, make, cmake, qmake, etc., the principle is to configure the paths of the `header` and `library` files.
 
 - The following configurations are based on `pkg-config` and `g++`.
 
-#### 2.4.1 `pkgconfig` Configuration
+#### 2.4.1 pkgconfig Configuration
 
   - Add `pkgconfig/openv.pc` to the system's `pkgconfig` searching directories：
 
@@ -155,7 +151,7 @@ Tips：
     $  pkg-config --help
     $  pkg-config --list-all
     $  pkg-config --modversion  opencv
-    3.4.0
+    > 3.4.0
     
     $  pkg-config --cflags opencv
     -I/home/pi/local/opencv-3.4.0/include/opencv -I/home/pi/local/opencv-3.4.0/include
@@ -169,24 +165,21 @@ Tips：
  #### 2.4.2 CMake Configuration
 
 CMakeList.txt
+> For `OpenCV_DIR`, the folder which contains the `OpenCVConfig.cmake` file.
 
-The default OpenCV installation folder path will be used for `OpenCV_DIR`:
-
+Use default OpenCV installation path:
 ```shell
 find_package( OpenCV REQUIRED )
-
 ```
 
-Self-defined OpenCV installation folder path:
-
+Use self-defined OpenCV installation path:
 e.g.
 
 ```shell
 set(OpenCV_DIR /usr/local/opencv4/lib/cmake/opencv4)
 find_package( OpenCV 4 REQUIRED )    
 ```
-
-e.g.
+or
 ```shell
 set(OpenCV_DIR /usr/share/OpenCV)
 find_package( OpenCV REQUIRED )
@@ -194,13 +187,13 @@ find_package( OpenCV REQUIRED )
 
 
 
-The folder which contains the `OpenCVConfig.cmake` file.
+
 
 #### 2.4.2 Compile the demo
 
-**C++ demo:**
+**C++ demo**
 
-`main.cpp`
+`main.cpp`:
 
 ```c++
 #include<opencv2/opencv.hpp>
@@ -220,7 +213,7 @@ int main(){
     return 0;
 }
 ```
-**Compile:**
+**Compile**
 
 ```shell
 g++ -o a.out main.cpp `pkg-config --cflags --libs opencv`
@@ -232,7 +225,7 @@ g++ -o a.out main.cpp `pkg-config --cflags --libs opencv`
 
 Add the OpenCV's `lib` path to the system's searching directories：
 
-**Global-based:**
+**Globally:**
 
 ```shell
 $ sudo vim /etc/ld.so.conf.d/opencv.conf
@@ -244,7 +237,8 @@ $ sudo ldconfig
 
 or
 
-**Shell-based:**
+**Locally:**
+(Shell-based)
 
 ```shell
 vim /home/pi/.bashrc

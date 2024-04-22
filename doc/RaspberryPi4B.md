@@ -53,9 +53,10 @@ pwd: raspberry
 ### Local ssh key generation
 
 ```shell
-ssh-keygen -t rsa -C "your_email"	add email address
+ssh-keygen -t rsa -C "your_email" # add email address or user_name@PC_name
 
-ssh-keygen -f xxx					-f set the output file name
+# set the output file name
+ssh-keygen -f xxx 
 ```
 
 generated files：
@@ -83,6 +84,13 @@ Host aliasxxx
 ssh aliasxxx
 ```
 
+```bash
+Host xxx
+    HostName xxx.xxx.xxx.xxxx
+    port xxxx
+    User xxx
+    IdentityFile xxx/.ssh/id_rsa
+```
 
 
 ### Copy Local Public Key to Remote Server

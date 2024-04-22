@@ -46,5 +46,11 @@ git config --global user.email "xxx@xxx.com"
 
 
 
+## netstat
+```shell
+sudo netstat -anp | grep xxxx
+```
+> tcp 0   0 0.0.0.0:1234    0.0.0.0:*   LISTEN  2891/pvrSdk-Demo-qu
+
 
 
