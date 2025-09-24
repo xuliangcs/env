@@ -47,9 +47,9 @@
 For instance:
 ```bash
 # create the env
-conda create -n demoname python=3.8
+conda create -n demo_name python=3.8
 # enter the env:
-conda activate demoname
+conda activate demo_name
 ```
 > Delete a conda envirnment: `conda env remove -n xxx`
 
@@ -71,7 +71,7 @@ conda config --remove-key channels
 ## Installation
 ```bash
 # enter the env:
-conda activate demoname
+conda activate demo_name
 # install pytorch
 conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=11.0 -c pytorch
 
@@ -96,7 +96,7 @@ scikit-learn==1.0.2
 
 ```bash
 # open a terminal
-conda activate demoname
+conda activate demo_name
 
 python 
 
